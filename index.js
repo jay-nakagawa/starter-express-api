@@ -43,6 +43,8 @@ app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('hi!')
 })
+
+
 connectDB().then(() => {
     app.listen(PORT, () => {
         console.log("listening for requests");
