@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 const PORT = process.env.PORT || 3000
 
-
+console.log("Starting server")
 const connectDB = async () => {
     try {
         const conn = await mongoose.connect("mongodb+srv://jaynakagawa777:mongod123@cluster0.t6yfhjw.mongodb.net/?retryWrites=true&w=majority");
@@ -39,6 +39,10 @@ const connectDB = async () => {
 // })
 
 
+app.get('/', (req,res) => {
+    res.send('Hello World')
+})
+
 app.all('/', (req, res) => {
     console.log("Just got a request!")
     res.send('hi!')
@@ -47,6 +51,6 @@ app.all('/', (req, res) => {
 
 connectDB().then(() => {
     app.listen(PORT, () => {
-        console.log("listening for requests");
+        console.log(`Listening on port ${PORT}`);
     })
 })
